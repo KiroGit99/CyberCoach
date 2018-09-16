@@ -24,16 +24,27 @@
 
                     <div class="card-body">
                         <h1 class="lead text-center">Admin Login</h1>
-                        <form action="">
+                        <form action="/admin/login" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control" />
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" class="form-control" />
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            <button class="btn btn-success btn-block">Enter</button>
+                            <button class="btn btn-success btn-block" type="submit">Enter</button>
                         </form>
                     </div>
                 </div>

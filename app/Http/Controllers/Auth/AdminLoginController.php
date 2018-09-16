@@ -42,6 +42,16 @@ class AdminLoginController extends Controller
     }
     public function showLoginForm()
     {
-        return redirect('/admin');
+        return redirect('/admin/login');
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
     }
 }

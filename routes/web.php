@@ -37,6 +37,9 @@ Route::get('/admin/admin-register', function () {
 //POST LOGIN ROUTE FOR TEACHER
 Route::post('/teacher/login', 'Auth\TeacherLoginController@login');
 
+//POST LOGIN ROUTE FOR ADMIN
+Route::post('/admin/login', 'Auth\AdminLoginController@login');
+
 //POST REGISTER ROUTE FOR TEACHER
 Route::post('/teacher/register', 'Auth\TeacherRegisterController@register');
 
@@ -49,7 +52,7 @@ Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/logi
 	
 	Route::get('home',function ()
 	{
-		return view('home');
+		return view('admin.dashboard');
 	});
 });
 
