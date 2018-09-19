@@ -104,6 +104,4 @@
         </div>
     </div>
 </div>
-
-<script src="{{asset('app.js')}}"></script>
 @endsection

@@ -60,7 +60,7 @@ Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/logi
 Route::group(['prefix' => 'teacher','middleware' => 'assign.guard:teacher,teacher/login'],function(){
 	Route::get('home',function ()
 	{
-		return view('teacher-home');
+		return view('teacher.dashboard');
 	});
 });
 
