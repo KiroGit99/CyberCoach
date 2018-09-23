@@ -26,25 +26,12 @@ Route::get('/admin/login', function () {
     return view('admin-login');
 });
 
-//REGISTRATION ROUTES (TEMPORARY)
-Route::get('/admin/teacher-register', function () {
-    return view('auth/teacher-register');
-});
-Route::get('/admin/admin-register', function () {
-    return view('auth/admin-register');
-});
 
 //POST LOGIN ROUTE FOR TEACHER
 Route::post('/teacher/login', 'Auth\TeacherLoginController@login');
 
 //POST LOGIN ROUTE FOR ADMIN
 Route::post('/admin/login', 'Auth\AdminLoginController@login');
-
-//POST REGISTER ROUTE FOR TEACHER
-Route::post('/teacher/register', 'Auth\TeacherRegisterController@register');
-
-//POST REGISTER ROUTE FOR ADMIN
-Route::post('/admin/register', 'Auth\AdminRegisterController@register');
 
 
 //ROUTES WHEN ADMIN IS LOGGED IN
@@ -57,6 +44,7 @@ Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/logi
 
 });
 
+//ADD USER ACCOUNT USING ADMIN
 Route::post('admin/addAccount', 'Auth\AdminRegisterController@checkType');
 
 //ROUTES WHEN TEACHER IS LOGGED IN
