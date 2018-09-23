@@ -54,7 +54,10 @@ Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/logi
 	{
 		return view('admin.dashboard');
 	});
+
 });
+
+Route::post('admin/addAccount', 'Auth\AdminRegisterController@checkType');
 
 //ROUTES WHEN TEACHER IS LOGGED IN
 Route::group(['prefix' => 'teacher','middleware' => 'assign.guard:teacher,teacher/login'],function(){

@@ -65,7 +65,7 @@
                 </div>
                 <div class="tab-pane fade" id="list-accts" role="tabpanel" aria-labelledby="list-accts-list">
                     <h1>User Accounts</h1>
-                    <button class="btn btn-primary float-right"><i class="fa fa-plus"></i> Add User Account</button>
+                    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addUserAccount"><i class="fa fa-plus"></i> Add User Account</button>
                     <table class="table mt-3">
                         <thead class="bg-success text-white">
                             <tr>
@@ -99,6 +99,55 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <!--MODAL - ADD USER ACCOUNT -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="addUserAccount">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add User Account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="addAccount" method="post">
+                        <div class="modal-body">
+                                @csrf
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label for="first_name">First Name:</label>
+                                        <input type="text" name="first_name" class="form-control" />
+                                    </div>
+                                    <div class="col">
+                                        <label for="last_name">Last Name:</label>
+                                        <input type="text" name="last_name" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Username: </label>
+                                    <input type="text" name="username" id="username" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password: </label>
+                                    <input type="password" name="password" id="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="user_type">User Type:</label>
+                                    <select name="user_type" id="user_type" class="form-control">
+                                        <option value="student">Student</option>
+                                        <option value="teacher">Teacher</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

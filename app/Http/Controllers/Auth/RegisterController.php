@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -37,7 +38,26 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:admin, admin/home')->except('logout');
+    }
+
+    public function checkType(Request $request){
+        $user_type = $request->user_type;
+        if($user_type == 'admin')
+        {
+            create_admin($request);
+        }
+        else if($user_type == 'teacher')
+        {
+            return create_teacher($request);
+        }
+        else if($user_type == 'student')
+        {
+            return create($request);
+        }
+
+        return redirect($this->redirectPath());
+
     }
 
     /**
@@ -57,6 +77,22 @@ class RegisterController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -71,4 +107,36 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Teacher
+     */
+    protected function create_teacher(array $data)
+    {
+        return Teacher::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Admin
+     */
+    protected function create_admin(array $data)
+    {
+        return Admin::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
 }

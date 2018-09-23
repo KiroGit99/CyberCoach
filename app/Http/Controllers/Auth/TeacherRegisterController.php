@@ -28,7 +28,7 @@ class TeacherRegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,7 +37,7 @@ class TeacherRegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:teacher, teacher/home')->except('logout');
+        $this->middleware('guest:admin, admin/home')->except('logout');
     }
 
 
