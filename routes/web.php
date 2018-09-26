@@ -37,24 +37,24 @@ Route::post('/admin/login', 'Auth\AdminLoginController@login');
 //ROUTES WHEN ADMIN IS LOGGED IN
 Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/login'],function(){
 	
-	Route::get('home',function ()
-	{
-		return view('admin.dashboard');
-	});
+	Route::get('home','AdminHomeController@index');
 
 });
 
 //ADD USER ACCOUNT USING ADMIN
 Route::post('admin/addAccount', 'Auth\AdminRegisterController@checkType');
 
+
 //ROUTES WHEN TEACHER IS LOGGED IN
 Route::group(['prefix' => 'teacher','middleware' => 'assign.guard:teacher,teacher/login'],function(){
-	Route::get('home',function ()
-	{
-		return view('teacher.dashboard');
-	});
+	Route::get('home', 'TeacherHomeController@index');
 });
+
+//TEACHER - UPLOAD FILE
+Route::post('/uploadFile', ['middleware' => 'assign.guard:teacher,teacher/login', 'uses' => 'LessonController@upload']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function(){
+	return view('student.dashboard');
+});
