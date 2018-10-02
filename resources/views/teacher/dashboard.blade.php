@@ -15,6 +15,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#quizzes" data-toggle="tab" role="tab">Quizzes</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#forum" data-toggle="tab" role="tab">Discussion Forum</a>
+            </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="announce" role="tabpanel" aria-labelledby="announce-tab">
@@ -42,52 +45,39 @@
                 </ul>
             </div>
             <div class="tab-pane" id="lessons" role="tabpanel" aria-labelledby="lessons-tab">
-                <button class="btn btn-primary my-3" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-plus"></i> Upload file</button>
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col-2">Filename</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($files as $file)
-                            <tr>
-                                <th scope="row">{{$file}}</th>
-                                <td><i class="fa fa-lg fa-download"></i></td>
-                                <td><i class="fa fa-lg fa-times"></i></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <!--UPLOAD MODAL-->
-                <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="/uploadFile" method="post" enctype="multipart/form-data">
-                                <div class="modal-body">
-                                        @csrf
-                                        <label for="lesson">File to upload:</label>
-                                        <input type="file" name="lesson" id="lesson" class="form-control">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Upload</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                @include('teacher.dashboard.lessons')
+                
             </div>
             <div class="tab-pane" id="homework" role="tabpanel" aria-labelledby="homework-tab">...</div>
             <div class="tab-pane" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">...</div>
+            <div class="tab-pane" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h1>Thread Title here</h1>
+                        <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod in animi tempora totam aperiam veritatis nostrum laboriosam, eum ducimus delectus.</p>
+                        <div class="button-group">
+                            <button class="btn btn-secondary" data-toggle="modal" data-target="#commentModal">Comment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ml-3 mt-3">
+                    <div class="card-body">
+                        <p><strong>Juan Dela Cruz</strong></p>
+                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eum, officia suscipit molestiae reprehenderit architecto eos enim cumque commodi, velit cupiditate neque aliquam at et ex dolorum dolores facere fuga.</p>
+                    </div>
+                </div>
+                <div class="card ml-3 mt-3">
+                    <div class="card-body">
+                        <p><strong>Juan Dela Cruz</strong></p>
+                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eum, officia suscipit molestiae reprehenderit architecto eos enim cumque commodi, velit cupiditate neque aliquam at et ex dolorum dolores facere fuga.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--MODALS  -->
+            @include('teacher.dashboard.modals.upload_file')
+            @include('teacher.dashboard.modals.forum_comment')
         </div>
     </div>
 
