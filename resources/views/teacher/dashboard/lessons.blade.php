@@ -10,7 +10,7 @@
         <tbody>
             @foreach($files as $file)
                 <tr>
-                    <th scope="row">{{$file}}</th>
+                    <th scope="row"><a href="{{asset('storage/lessons_'.$teacher->id.'/'.$file)}}">{{$file}}</a></th>
                     <td><i class="fa fa-lg fa-download"></i></td>
                     <td><i class="fa fa-lg fa-times"></i></td>
                 </tr>

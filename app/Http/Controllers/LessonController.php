@@ -22,7 +22,7 @@ class LessonController extends Controller
             $user_id = Auth::id();
         }
         $name = $request->lesson->getClientOriginalName();
-        $path = $request->lesson->storeAs('lessons_'.$user_id, $name);
+        $path = $request->lesson->storeAs('public/lessons_'.$user_id, $name);
         $extension = $request->lesson->extension();
 
         $lesson = new Lessons;

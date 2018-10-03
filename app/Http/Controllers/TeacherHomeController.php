@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Teacher;
 use Auth;
 
 class TeacherHomeController extends Controller
@@ -18,7 +19,7 @@ class TeacherHomeController extends Controller
      public function index()
      {
         $user = Auth::id();
-        $directory = 'lessons_'.$user;
+        $directory = 'public/lessons_'.$user;
         $files = Storage::files($directory);
         for($x = 0; $x < count($files); $x++)
         {
@@ -27,6 +28,7 @@ class TeacherHomeController extends Controller
             $file = substr($file, $position + 1);
             $files[$x] = $file;
         }
-       return view('teacher.dashboard')->with('files', $files);
+        $teacher = Teacher::find($user);
+       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files]);
      }
 }
