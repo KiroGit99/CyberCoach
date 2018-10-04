@@ -10,8 +10,8 @@
         <tbody>
             @foreach($files as $file)
                 <tr>
-                    <th scope="row"><a href="{{asset('/ViewerJS/#../../storage/lessons_'.$teacher->id.'/'.$file)}}" target="_blank">{{$file}}</a></th>
-                    <td><a href="{{asset('storage/lessons_'.$teacher->id.'/'.$file)}}"><i class="fa fa-lg fa-download"></i></a></td>
+                    <th scope="row"><a href="{{asset('storage/lessons_'.$teacher->id.'/'.$file)}}">{{$file}}</a></th>
+                    <td><i class="fa fa-lg fa-download"></i></td>
                     <td><i class="fa fa-lg fa-times"></i></td>
                 </tr>
             @endforeach

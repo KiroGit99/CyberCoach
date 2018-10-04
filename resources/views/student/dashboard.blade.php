@@ -42,24 +42,7 @@
                 </ul>
             </div>
             <div class="tab-pane" id="lessons" role="tabpanel" aria-labelledby="lessons-tab">
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col-2">Filename</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                            <tr>
-                                <th scope="row"></th>
-                                <td><i class="fa fa-lg fa-download"></i></td>
-                                <td><i class="fa fa-lg fa-times"></i></td>
-                            </tr>
-
-                    </tbody>
-                </table>
+                @include('student.dashboard.lessons')
             </div>
             <div class="tab-pane" id="homework" role="tabpanel" aria-labelledby="homework-tab">...</div>
             <div class="tab-pane" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">...</div>
