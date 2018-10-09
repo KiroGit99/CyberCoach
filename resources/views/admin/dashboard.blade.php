@@ -19,25 +19,21 @@
                             <tr>
                             <th scope="col">Timestamp</th>
                             <th scope="col">User</th>
+                            <th scope="col">User Type</th>
                             <th scope="col">Activity</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">09-21-2018 12:00:01</th>
-                                <td>jsantos</td>
-                                <td>uploaded homework.pdf</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">09-13-2018 04:56:07</th>
-                                <td>admin1</td>
-                                <td>added user account admin2</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">09-12-2018 09:10:12</th>
-                                <td>jdelacruz</td>
-                                <td>uploaded homework.pdf to jsantos</td>
-                            </tr>
+                            @foreach($activity as $act)
+                                
+                                <tr>
+                                    <th scope="row">{{$act['timestamp']}}</th>
+                                    <td>{{$act['username']}}</td>
+                                    <td>{{$act['user_type']}}</td>
+                                    <td>{{$act['activity']}}</td>
+                                </tr>
+                                
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

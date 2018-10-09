@@ -1,4 +1,3 @@
-<button class="btn btn-primary my-3" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-plus"></i> Upload file</button>
     <table class="table">
         <thead>
             <tr>
@@ -10,8 +9,8 @@
         <tbody>
             @foreach($files as $file)
                 <tr>
-                    <th scope="row"><a href="{{asset('storage/lessons_'.$teacher->id.'/'.$file)}}">{{$file}}</a></th>
-                    <td><i class="fa fa-lg fa-download"></i></td>
+                    <th scope="row"><a href="{{asset('/ViewerJS/#../../storage/lessons_'.$student->teacher.'/'.$file)}}">{{$file}}</a></th>
+                    <td><a href="{{asset('storage/lessons_'.$student->teacher.'/'.$file)}}"><i class="fa fa-lg fa-download"></i></a></td>
                     <td><i class="fa fa-lg fa-times"></i></td>
                 </tr>
             @endforeach

@@ -16,6 +16,10 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('thread-head', require('./components/ThreadHead.vue'));
+Vue.component('thread-comment-section', require('./components/ThreadCommentSection.vue'));
+Vue.component('thread-comment', require('./components/ThreadComment.vue'));
+
 
 const app = new Vue({
     el: '#app'

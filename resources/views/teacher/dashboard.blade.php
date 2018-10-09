@@ -46,33 +46,31 @@
             </div>
             <div class="tab-pane" id="lessons" role="tabpanel" aria-labelledby="lessons-tab">
                 @include('teacher.dashboard.lessons')
-                
             </div>
             <div class="tab-pane" id="homework" role="tabpanel" aria-labelledby="homework-tab">...</div>
             <div class="tab-pane" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">...</div>
             <div class="tab-pane" id="forum" role="tabpanel" aria-labelledby="forum-tab">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h1>Thread Title here</h1>
-                        <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod in animi tempora totam aperiam veritatis nostrum laboriosam, eum ducimus delectus.</p>
-                        <div class="button-group">
-                            <button class="btn btn-secondary" data-toggle="modal" data-target="#commentModal">Comment</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card ml-3 mt-3">
-                    <div class="card-body">
-                        <p><strong>Juan Dela Cruz</strong></p>
-                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eum, officia suscipit molestiae reprehenderit architecto eos enim cumque commodi, velit cupiditate neque aliquam at et ex dolorum dolores facere fuga.</p>
-                    </div>
-                </div>
-                <div class="card ml-3 mt-3">
-                    <div class="card-body">
-                        <p><strong>Juan Dela Cruz</strong></p>
-                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eum, officia suscipit molestiae reprehenderit architecto eos enim cumque commodi, velit cupiditate neque aliquam at et ex dolorum dolores facere fuga.</p>
-                    </div>
-                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col-2">Discussion Threads</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Discussion thread 1</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>Discussion thread 1</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <!--MODALS  -->

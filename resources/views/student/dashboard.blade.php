@@ -15,6 +15,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#quizzes" data-toggle="tab" role="tab">Quizzes</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#forum" data-toggle="tab" role="tab">Discussion Forum</a>
+            </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="announce" role="tabpanel" aria-labelledby="announce-tab">
@@ -46,6 +49,29 @@
             </div>
             <div class="tab-pane" id="homework" role="tabpanel" aria-labelledby="homework-tab">...</div>
             <div class="tab-pane" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">...</div>
+            <div class="tab-pane" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col-2">Discussion Threads</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><a href="/forum" target="_blank">Discussion thread 1</a></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th><a href="/forum">Discussion thread 1</a></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

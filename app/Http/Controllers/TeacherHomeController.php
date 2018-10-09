@@ -19,6 +19,7 @@ class TeacherHomeController extends Controller
      public function index()
      {
         $user = Auth::id();
+        //get lessons
         $directory = 'public/lessons_'.$user;
         $files = Storage::files($directory);
         for($x = 0; $x < count($files); $x++)

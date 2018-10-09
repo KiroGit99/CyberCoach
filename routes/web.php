@@ -53,8 +53,9 @@ Route::group(['prefix' => 'teacher','middleware' => 'assign.guard:teacher,teache
 //TEACHER - UPLOAD FILE
 Route::post('/uploadFile', ['middleware' => 'assign.guard:teacher,teacher/login', 'uses' => 'LessonController@upload']);
 
+//DISCUSSION FORUM ROUTES
+Route::get('/forum', 'ForumController@showThread');
+
 Auth::routes();
 
-Route::get('/home', function(){
-	return view('student.dashboard');
-});
+Route::get('/home', 'HomeController@index');
