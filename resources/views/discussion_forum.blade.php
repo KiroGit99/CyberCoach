@@ -1,12 +1,6 @@
         <head>
             <link rel="stylesheet" href="{{asset('css/app.css')}}">
             <title>Discussion Forum</title>
-            <script>
-            // rename myToken as you like
-            window.myToken =  <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-            ]); ?>
-            </script>
         </head>
         <body>
             <div id="app" class="container mt-3"> 
