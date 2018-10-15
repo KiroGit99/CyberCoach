@@ -11,14 +11,29 @@
         <body>
             <div id="app" class="container mt-3"> 
                 <!--input type="hidden" name="token" value="{{csrf_field()}}" v-model="token"-->
-                <thread-head></thread-head>
-                <thread-comment-section></thread-comment-section>
-                <div class="card ml-3 mt-3">
+                <div class="card mt-3">
                     <div class="card-body">
-                        <p><strong>Juan Dela Cruz</strong></p>
-                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eum, officia suscipit molestiae reprehenderit architecto eos enim cumque commodi, velit cupiditate neque aliquam at et ex dolorum dolores facere fuga.</p>
+                        <h1>{{$thread->thread_title}}</h1>
+                        <p class="lead">{{$thread->thread_body}}</p>
+                        <div class="button-group">
+                            <button class="btn btn-secondary" data-toggle="modal" data-target="#commentModal">Comment</button>
+                        </div>
                     </div>
                 </div>
+                @forelse($comments as $comment)
+                    <div class="card ml-3 mt-3">
+                        <div class="card-body">
+                            <p><strong>{{$comment->first_name.' '.$comment->last_name}}</strong></p>
+                            <p class="lead">{{$comment->comment}}</p>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="card ml-3 mt-3">
+                        <div class="card-body">
+                            <p class="lead">No comments yet.</p>
+                        </div>
+                    </div>
+                @endforelse
             </div>
 
             <!-- COMMENT MODAL -->
@@ -31,17 +46,19 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form action="">
-                            <textarea name="comment" id="comment" class="form-control" cols="30" rows="10"></textarea>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
+                    <form action="/addComment" method="post">
+                        @csrf
+                        <input type="hidden" name="thread_id" value="{{$thread->id}}">
+                        <div class="modal-body">
+                                <textarea name="comment" id="comment" class="form-control" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
-            <script src="js/app.js"></script>
+            <script src="{{asset('js/app.js')}}"></script>
         </body>

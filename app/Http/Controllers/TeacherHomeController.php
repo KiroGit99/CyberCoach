@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Teacher;
+use App\DiscussionThread;
 use Auth;
 
 class TeacherHomeController extends Controller
@@ -30,6 +31,7 @@ class TeacherHomeController extends Controller
             $files[$x] = $file;
         }
         $teacher = Teacher::find($user);
-       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files]);
+        $threads = DiscussionThread::all();
+       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files, 'threads' => $threads]);
      }
 }
