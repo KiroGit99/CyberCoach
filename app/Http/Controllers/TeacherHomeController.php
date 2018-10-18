@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Teacher;
 use App\DiscussionThread;
+use App\Announcement;
 use Auth;
 
 class TeacherHomeController extends Controller
@@ -32,6 +33,10 @@ class TeacherHomeController extends Controller
         }
         $teacher = Teacher::find($user);
         $threads = DiscussionThread::all();
-       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files, 'threads' => $threads]);
+        $announcements = Announcement::where('user_type', 'teacher')
+                                    ->where('user_id', $teacher->id)
+                                    ->orWhere('user_type', 'admin')
+                                    ->get();
+       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files, 'threads' => $threads, 'announce' => $announcements]);
      }
 }

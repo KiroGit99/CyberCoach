@@ -52,13 +52,18 @@ Route::group(['prefix' => 'teacher','middleware' => 'assign.guard:teacher,teache
 
 //TEACHER - UPLOAD FILE
 Route::post('/uploadFile', ['middleware' => 'assign.guard:teacher,teacher/login', 'uses' => 'LessonController@upload']);
-
 Route::post('/addComment', ['middleware' => 'assign.guard:teacher,teacher/login', 'uses' => 'ForumController@addComment']);
+Route::post('/addAnnouncement', ['middleware' => 'assign.guard:teacher,teacher/login', 'uses' => 'AnnouncementController@addAnnouncement']);
 
 //DISCUSSION FORUM ROUTES
 Route::get('/forum/{i}', 'ForumController@showThread');
 Route::post('/addThread', 'ForumController@addThread');
 //Route::post('/addComment', 'ForumController@addComment');
+
+//QUIZ ROUTES
+Route::get('/createQuiz', function(){
+    return view('teacher.quiz_creator');
+});
 
 Auth::routes();
 

@@ -34,14 +34,14 @@
                     <div class="card-header bg-primary text-white">
                         My Announcements
                         <div class="float-right">
-                            <i class="fa fa-plus"></i>
+                            <a data-toggle="modal" data-target="#addAnnouncement"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, illo.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, error.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit amet.</li>
+                    @foreach($announce as $a)
+                        <li class="list-group-item"><h3>{{$a->title}}</h3><p>{{$a->announcement}}</p></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="tab-pane" id="lessons" role="tabpanel" aria-labelledby="lessons-tab">
@@ -49,7 +49,7 @@
             </div>
             <div class="tab-pane" id="homework" role="tabpanel" aria-labelledby="homework-tab">...</div>
             <div class="tab-pane" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">
-                <button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Create Quiz</button>
+                <a class="btn btn-primary" target="_blank" href="/createQuiz"><i class="fa fa-plus"></i>&nbsp; Create Quiz</a>
                 <div class="card mt-3">
                     <div class="card-body">
                         <h3>Quiz 1</h3>
@@ -79,6 +79,7 @@
             <!--MODALS  -->
             @include('teacher.dashboard.modals.upload_file')
             @include('teacher.dashboard.modals.forum_comment')
+            @include('teacher.dashboard.modals.announcement')
         </div>
     </div>
 
