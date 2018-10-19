@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Teacher;
 use App\DiscussionThread;
 use App\Announcement;
+use App\Quizzes;
 use Auth;
 
 class TeacherHomeController extends Controller
@@ -37,6 +38,8 @@ class TeacherHomeController extends Controller
                                     ->where('user_id', $teacher->id)
                                     ->orWhere('user_type', 'admin')
                                     ->get();
-       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files, 'threads' => $threads, 'announce' => $announcements]);
+        $quizzes = Quizzes::where('teacher_id', $user)->get();
+       return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files, 'threads' => $threads, 
+                                            'announce' => $announcements, 'quizzes' => $quizzes]);
      }
 }

@@ -50,27 +50,16 @@
             <div class="tab-pane" id="homework" role="tabpanel" aria-labelledby="homework-tab">...</div>
             <div class="tab-pane" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">
                 <a class="btn btn-primary" target="_blank" href="/createQuiz"><i class="fa fa-plus"></i>&nbsp; Create Quiz</a>
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h3>Quiz 1</h3>
-                        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, repudiandae.</p>
-                        <button type="button" class="btn btn-success">See Results</button>
+                @foreach($quizzes as $quiz)
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h3>{{$quiz->title}}</h3>
+                            <p class="lead">{{$quiz->description}}</p>
+                            <button type="button" class="btn btn-success">See Results</button>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h3>Quiz 2</h3>
-                        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, repudiandae.</p>
-                        <button type="button" class="btn btn-success">See Results</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h3>Quiz 3</h3>
-                        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, repudiandae.</p>
-                        <button type="button" class="btn btn-success">See Results</button>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
             <div class="tab-pane" id="forum" role="tabpanel" aria-labelledby="forum-tab">
                 @include('teacher.dashboard.discussion_forum')
