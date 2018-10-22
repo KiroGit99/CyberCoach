@@ -25,23 +25,21 @@
                     <div class="card-header bg-primary text-white">Teacher Announcements</div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, illo.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, error.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit amet.</li>
+                    @foreach($t_announce as $t)
+                        <li class="list-group-item"><h3>{{$t->title}}</h3><p>{{$t->announcement}}</p></li>
+                    @endforeach
+                    
                 </ul>
 
                 <div class="card mt-3">
                     <div class="card-header bg-success text-white">
                         Admin Announcements
-                        <div class="float-right">
-                            <i class="fa fa-plus"></i>
-                        </div>
                     </div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, illo.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, error.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit amet.</li>
+                    @foreach($a_announce as $a)
+                        <li class="list-group-item"><h3>{{$a->title}}</h3><p>{{$a->announcement}}</p></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="tab-pane" id="lessons" role="tabpanel" aria-labelledby="lessons-tab">

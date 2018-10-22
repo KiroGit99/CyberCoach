@@ -16,7 +16,7 @@
                 <a class="nav-link" href="#quizzes" data-toggle="tab" role="tab">Quizzes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#forum" data-toggle="tab" role="tab">Discussion Forum</a>
+                <a class="nav-link" href="#forum" data-toggle="tab" roltrishe="tab">Discussion Forum</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -25,9 +25,9 @@
                     <div class="card-header bg-success text-white">Admin Announcements</div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, illo.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, error.</li>
-                    <li class="list-group-item">Lorem ipsum dolor sit amet.</li>
+                    @foreach($a_announce as $a)
+                        <li class="list-group-item"><h3>{{$a->title}}</h3><p>{{$a->announcement}}</p></li>
+                    @endforeach
                 </ul>
 
                 <div class="card mt-3">
@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <ul class="list-group">
-                    @foreach($announce as $a)
-                        <li class="list-group-item"><h3>{{$a->title}}</h3><p>{{$a->announcement}}</p></li>
+                    @foreach($t_announce as $t)
+                        <li class="list-group-item"><h3>{{$t->title}}</h3><p>{{$t->announcement}}</p></li>
                     @endforeach
                 </ul>
             </div>

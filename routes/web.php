@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('student-login');
 });
 
+Route::get('/student/register', 'Auth\StudentRegisterController@showRegistrationForm');
+Route::post('/student/register', 'Auth\StudentRegisterController@register');
+
 //LOGIN ROUTES
 Route::get('/teacher/login', function () {
     return view('teacher-login');
@@ -37,7 +40,8 @@ Route::post('/admin/login', 'Auth\AdminLoginController@login');
 //ROUTES WHEN ADMIN IS LOGGED IN
 Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/login'],function(){
 	
-	Route::get('home','AdminHomeController@index');
+    Route::get('home','AdminHomeController@index');
+    Route::post('addAnnouncement', 'AnnouncementController@addAnnouncement');
 
 });
 

@@ -33,7 +33,7 @@
                             </div>
                             @if ($errors->has('username'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                              @endif
                              
@@ -48,6 +48,7 @@
                             @endif
                             <button class="btn btn-primary btn-block">Enter</button>
                             <a class="btn btn-success btn-block" href="/teacher/login">Login as Teacher</a>
+                            <a href="/student/register" class="text-center">No account yet?</a>
                         </form>
                     </div>
                 </div>

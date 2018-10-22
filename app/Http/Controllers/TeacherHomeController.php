@@ -34,12 +34,13 @@ class TeacherHomeController extends Controller
         }
         $teacher = Teacher::find($user);
         $threads = DiscussionThread::all();
-        $announcements = Announcement::where('user_type', 'teacher')
+        $teacher_announce = Announcement::where('user_type', 'teacher')
                                     ->where('user_id', $teacher->id)
-                                    ->orWhere('user_type', 'admin')
+                                    ->get();
+        $admin_announce = Announcement::where('user_type', 'admin')
                                     ->get();
         $quizzes = Quizzes::where('teacher_id', $user)->get();
        return view('teacher.dashboard')->with(['teacher' => $teacher, 'files'=> $files, 'threads' => $threads, 
-                                            'announce' => $announcements, 'quizzes' => $quizzes]);
+                                            't_announce' => $teacher_announce, 'a_announce' => $admin_announce, 'quizzes' => $quizzes]);
      }
 }

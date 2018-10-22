@@ -8,6 +8,8 @@ use App\Student;
 use App\Teacher;
 use App\Admin;
 use App\Lessons;
+use App\Announcement;
+use Auth;
 
 class AdminHomeController extends Controller
 {
@@ -95,6 +97,14 @@ class AdminHomeController extends Controller
             }
             $counter++;
         }
-        return view('admin.dashboard')->with('activity', $admin_log);
+        if(Auth::guard('admin')->check())
+        {
+            $id=Auth::id();
+        }
+        //get admin announcements
+        $announcements = Announcement::where('user_type', 'admin')
+                                    ->where('user_id', $id)
+                                    ->get();
+        return view('admin.dashboard')->with(['activity' => $admin_log, 'announce' => $announcements]);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Student;
 use App\DiscussionThread;
+use App\Announcement;
 use Auth;
 
 class HomeController extends Controller
@@ -44,6 +45,11 @@ class HomeController extends Controller
         //get discussion threads
         $threads = DiscussionThread::all();
 
-        return view('student.dashboard')->with(['student' => $student, 'files' => $files, 'threads' => $threads]);
+        //get announcements
+        $teacher_announce = Announcement::where('user_type', 'teacher')
+                                    ->where('user_id', $student->teacher)
+                                    ->get();
+        $admin_announce = Announcement::where('user_type', 'admin')->get();
+        return view('student.dashboard')->with(['student' => $student, 'files' => $files, 'threads' => $threads, 't_announce' => $teacher_announce, 'a_announce' => $admin_announce]);
     }
 }

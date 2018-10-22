@@ -39,25 +39,15 @@
                 </div>
                 <div class="tab-pane fade" id="list-announce" role="tabpanel" aria-labelledby="list-announce-list">
                     <h1 class="text-center">Announcements</h1>
-                    <button class="btn btn-success"><i class="fa fa-plus"></i> Post an Announcement</button>
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <div class="card-title">Maintenance Check</div>
-                            <div class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, fuga!</div>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#postAnnounceModal"><i class="fa fa-plus"></i> Post an Announcement</button>
+                    @foreach($announce as $a)
+                        <div class="card mt-2">
+                            <div class="card-body my-2">
+                                <div class="card-title">{{$a->title}}</div>
+                                <div class="card-text">{{$a->announcement}}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <div class="card-title">Downtime at 09-22-2018</div>
-                            <div class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, fuga!</div>
-                        </div>
-                    </div>
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <div class="card-title">System Upgrade at 08-15-2018</div>
-                            <div class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, fuga!</div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="tab-pane fade" id="list-accts" role="tabpanel" aria-labelledby="list-accts-list">
                     <h1>User Accounts</h1>
@@ -147,6 +137,7 @@
                 </div>
             </div>
         </div>
+        @include('admin.modals.post_announce')
     </div>
 </div>
 @endsection
